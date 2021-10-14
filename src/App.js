@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import QRCodeCanvas from './QRCodeCanvas';
 
 function App() {
+  const [text, setText] = useState('');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        <h1>QRCode Generetor</h1>
+        <input
+          onChange={(element) => {
+            setText(element.target.value);
+          }}
+          value={text}
+          placeholder="Digite a sua URL..."
+        />
+        <QRCodeCanvas text={text}></QRCodeCanvas>
+      </main>
     </div>
   );
 }
